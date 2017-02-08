@@ -73,6 +73,10 @@ public class Sessao {
 	public Integer getTotalIngressos() {
 		return totalIngressos;
 	}
+	
+	public Double getPorcentagemReservados(){
+		return (this.getTotalIngressos() - this.getIngressosReservados()) / this.getTotalIngressos().doubleValue();
+	}
 
 	public void setTotalIngressos(Integer totalIngressos) {
 		this.totalIngressos = totalIngressos;
@@ -119,6 +123,10 @@ public class Sessao {
 
 	public BigDecimal getPreco() {
 		return preco;
+	}
+	
+	public BigDecimal calculaPreco(BigDecimal preco, Double taxa) {
+		return preco.add(this.getPreco().multiply(BigDecimal.valueOf(taxa)));
 	}
 	
 }
